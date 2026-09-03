@@ -1,0 +1,99 @@
+{
+  "app": "customer_behavior",
+  "task": "classification",
+  "target": "Recommended IND",
+  "feature_order": [
+    "Age",
+    "Rating",
+    "Positive Feedback Count",
+    "Division Name",
+    "Department Name",
+    "Class Name",
+    "Review Text"
+  ],
+  "uses_text_only": false,
+  "best_model": "Logistic Regression",
+  "random_seed": 42,
+  "validation_metrics": {
+    "Logistic Regression": {
+      "Features": "tabular+text",
+      "Accuracy": 0.9404,
+      "Precision": 0.9618,
+      "Recall": 0.9658,
+      "F1": 0.9638,
+      "ROC-AUC": 0.9807
+    },
+    "Decision Tree": {
+      "Features": "tabular+text",
+      "Accuracy": 0.9393,
+      "Precision": 0.9712,
+      "Recall": 0.9544,
+      "F1": 0.9627,
+      "ROC-AUC": 0.9503
+    },
+    "SVM (Linear)": {
+      "Features": "tabular+text",
+      "Accuracy": 0.9356,
+      "Precision": 0.9575,
+      "Recall": 0.9644,
+      "F1": 0.961,
+      "ROC-AUC": 0.976
+    },
+    "Text-based Linear Classifier (LogReg, text-only)": {
+      "Features": "text-only",
+      "Accuracy": 0.893,
+      "Precision": 0.8987,
+      "Recall": 0.9803,
+      "F1": 0.9378,
+      "ROC-AUC": 0.9282
+    },
+    "Random Forest": {
+      "Features": "tabular+text",
+      "Accuracy": 0.8706,
+      "Precision": 0.8675,
+      "Recall": 0.9945,
+      "F1": 0.9267,
+      "ROC-AUC": 0.9752
+    },
+    "Multinomial Naive Bayes (text-only)": {
+      "Features": "text-only",
+      "Accuracy": 0.8703,
+      "Precision": 0.8713,
+      "Recall": 0.9883,
+      "F1": 0.9261,
+      "ROC-AUC": 0.9211
+    }
+  },
+  "test_metrics": {
+    "Accuracy": 0.9421,
+    "Precision": 0.9613,
+    "Recall": 0.9686,
+    "F1": 0.9649,
+    "ROC-AUC": 0.9792
+  },
+  "ablation_tabular_vs_text": [
+    {
+      "Representation": "Tabular-only (Age, Rating, PFC, Division/Dept/Class)",
+      "d": 32,
+      "F1": 0.9603,
+      "ROC-AUC": 0.9762
+    },
+    {
+      "Representation": "Text-only (TF-IDF of Review Text)",
+      "d": 5000,
+      "F1": 0.9378,
+      "ROC-AUC": 0.9282
+    },
+    {
+      "Representation": "Combined tabular + text",
+      "d": 2032,
+      "F1": 0.9638,
+      "ROC-AUC": 0.9807
+    }
+  ],
+  "n_train": 16440,
+  "n_val": 3523,
+  "n_test": 3523,
+  "d_combined": 2032,
+  "d_text_only": 5000
+}

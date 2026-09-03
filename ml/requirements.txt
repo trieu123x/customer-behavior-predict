@@ -1,0 +1,13 @@
+pandas
+numpy
+scipy
+scikit-learn
+matplotlib
+seaborn
+joblib
+fastapi
+uvicorn[standard]
+pydantic
+nbformat
+nbclient
+ipykernel
