@@ -1,0 +1,427 @@
+[
+ {
+  "input": {
+   "Age": 47,
+   "Rating": 5,
+   "Positive Feedback Count": 0,
+   "Division Name": "General",
+   "Review Text": "Perfect dress for hot, humid, sticky weather."
+  },
+  "expected_proba": [
+   0.01239,
+   0.939051,
+   0.025782,
+   0.008374,
+   0.002776,
+   0.011627
+  ]
+ },
+ {
+  "input": {
+   "Age": 31,
+   "Rating": 5,
+   "Positive Feedback Count": 0,
+   "Division Name": "General Petite",
+   "Review Text": "The dress is very beautiful and looks expensive. it will make a nice wedding dress. it does run quite small though. i am 5'2\" and 90-95lbs with a straight figure, but the 00p was too constricting."
+  },
+  "expected_proba": [
+   0.000376,
+   0.993684,
+   0.001683,
+   0.002043,
+   0.000196,
+   0.002017
+  ]
+ },
+ {
+  "input": {
+   "Age": 69,
+   "Rating": 5,
+   "Positive Feedback Count": 2,
+   "Division Name": "General Petite",
+   "Review Text": "Never thought i would buy a jumpsuit, but this one is gorgeous. i put true to size. i ordered a m and a l. i kept the l because i like the looser fit. weigh 150# and am 5' 6 1/2\" tall. i carry any extra weight at my waist and the l just looked better. i almost always wear a m in retailer clothes. love the feel of it and the way it looks on me. really looking forward to wearing it. on sale it is a great buy."
+  },
+  "expected_proba": [
+   0.177073,
+   0.072478,
+   0.619044,
+   0.005737,
+   0.073368,
+   0.052299
+  ]
+ },
+ {
+  "input": {
+   "Age": 45,
+   "Rating": 5,
+   "Positive Feedback Count": 0,
+   "Division Name": "General",
+   "Review Text": "This dress is beautifully tailored and so flattering. i feel very comfortable wearing it to work because of the sleeves and neckline, but think it would also be good to wear out. i'm so happy i bought it."
+  },
+  "expected_proba": [
+   0.018741,
+   0.934095,
+   0.03381,
+   0.003831,
+   0.001736,
+   0.007788
+  ]
+ },
+ {
+  "input": {
+   "Age": 27,
+   "Rating": 5,
+   "Positive Feedback Count": 2,
+   "Division Name": "General",
+   "Review Text": "I love this dress! my goal is to have a closet full of clothes that are really cute and stylish, but are also very comfortable... this dress fit the bill. the mixture of the fabrics is even more cute in person than it looks online, and the fabric is so soft, it almost feel like wearing pajamas. the weight of the fabric also makes it hang really nicely, and so it's flattering. overall, a great addition to my spring/summer wardrobe."
+  },
+  "expected_proba": [
+   0.005105,
+   0.974403,
+   0.011986,
+   0.002667,
+   0.000745,
+   0.005095
+  ]
+ },
+ {
+  "input": {
+   "Age": 39,
+   "Rating": 5,
+   "Positive Feedback Count": 3,
+   "Division Name": "General Petite",
+   "Review Text": "Love, love this tunic. my size 4 fits perfectly with a little room, material is very soft and very comfortable. could be worn with leggings or with a belt as a dress...so many options. so worth it!!!"
+  },
+  "expected_proba": [
+   0.014425,
+   0.915719,
+   0.030963,
+   0.015437,
+   0.004833,
+   0.018622
+  ]
+ },
+ {
+  "input": {
+   "Age": 63,
+   "Rating": 5,
+   "Positive Feedback Count": 3,
+   "Division Name": "General",
+   "Review Text": "This chambray is super soft! it has such a great feel and texture. i love the detail and design on the front. it adds just the right amount of interest without making the top feel busy and still very neutral in color so you can dress it many different ways. i'm not sure how this fits in comparison to other holding horses shirts/tops, but i had to size up one from my typical retailer size because of the my (which isn't large!). so excited to get a lot of use out of this!"
+  },
+  "expected_proba": [
+   0.745687,
+   0.09814,
+   0.087001,
+   0.009606,
+   0.038777,
+   0.020789
+  ]
+ },
+ {
+  "input": {
+   "Age": 41,
+   "Rating": 5,
+   "Positive Feedback Count": 3,
+   "Division Name": "General Petite",
+   "Review Text": "I'm so pleased with this cropped chino with all its lovely colors. i have bought 3 colors so far and i love the fit and comfort of these. i'm 5\"1, 104 pounds and took the 24p since this runs a size large. my favorite is the lovely moss color which really a brighter mint green and i also love the honey color for spring and summer. these fit slightly slim yet still feel relaxed. love them and highly recommend these!"
+  },
+  "expected_proba": [
+   0.302275,
+   0.077846,
+   0.521272,
+   0.004576,
+   0.057048,
+   0.036983
+  ]
+ },
+ {
+  "input": {
+   "Age": 31,
+   "Rating": 5,
+   "Positive Feedback Count": 1,
+   "Division Name": "General",
+   "Review Text": "I looked at the other reviews before purchasing and this is the one time it didn't work out for me. a lot of people said to size up, so i ordered a medium and it was far too big on me. i reordered my regular small and it's perfect. it's shorter, obviously, but not so short that it is unwearable. i can't wait to wear this out!"
+  },
+  "expected_proba": [
+   0.713531,
+   0.082117,
+   0.144723,
+   0.005382,
+   0.036729,
+   0.017518
+  ]
+ },
+ {
+  "input": {
+   "Age": 48,
+   "Rating": 5,
+   "Positive Feedback Count": 1,
+   "Division Name": "General",
+   "Review Text": "I ordered the mango and the navy in size 28. i am 5' and 130 lbs. both arrived with the size 28 label on them, the mango fit perfectly. perfect length on the legs and very flattering. the navy, on the other hand, was an inch shorter and an inch narrower! i kept double-checking the packing slip and the label inside the shorts to see if they accidentally sent a 27p. but no, it was clearly a 28. i brought that back to the store and ordered another navy 28, hoping that pair was just mislabeled 28 or"
+  },
+  "expected_proba": [
+   0.023964,
+   0.003693,
+   0.96379,
+   9e-06,
+   0.005893,
+   0.002651
+  ]
+ },
+ {
+  "input": {
+   "Age": 39,
+   "Rating": 5,
+   "Positive Feedback Count": 0,
+   "Division Name": "General",
+   "Review Text": "I love this top. fit is perfect for me. shows just the right amount of cleavage. wore it to dinner on my birthday and got a ton of compliments!"
+  },
+  "expected_proba": [
+   0.220884,
+   0.243465,
+   0.490806,
+   0.003382,
+   0.017251,
+   0.024212
+  ]
+ },
+ {
+  "input": {
+   "Age": 35,
+   "Rating": 5,
+   "Positive Feedback Count": 1,
+   "Division Name": "General Petite",
+   "Review Text": "I bought this tunic over christmastime at full price. i absolutely adore it! in my opinion, it isn't too thick or too thin. i got my usual size large and i think it fits perfectly! there are side slits, so it's perfect with skinny jeans or leggings. it's flattering because of the vertical stripes in the fabric. also with the grey color, there is a difference in the two fabrics that are used in the construction, so this adds some additional visual appeal. i haven't had any problems with snagging"
+  },
+  "expected_proba": [
+   0.956529,
+   0.007932,
+   0.018954,
+   0.00073,
+   0.014016,
+   0.001838
+  ]
+ },
+ {
+  "input": {
+   "Age": 44,
+   "Rating": 5,
+   "Positive Feedback Count": 14,
+   "Division Name": "General Petite",
+   "Review Text": "I love this sweater! the wool is soft and not itchy. it can be worn tied in the front as shown or tied in the back. pretty embrodering and very flattering."
+  },
+  "expected_proba": [
+   0.98562,
+   0.000951,
+   0.002533,
+   0.000202,
+   0.010362,
+   0.000332
+  ]
+ },
+ {
+  "input": {
+   "Age": 36,
+   "Rating": 4,
+   "Positive Feedback Count": 1,
+   "Division Name": "General",
+   "Review Text": "I love the colors in this top. the black tie makes this top different from anything else in my closet. the cut accentuates my shoulders, which i like. i usually wear a petite small, so i ordered this in an extra small and it fits nicely. the fabric could be a bit softer, but i still really like this top. it's unique and very feminine."
+  },
+  "expected_proba": [
+   0.395164,
+   0.016322,
+   0.040738,
+   0.038505,
+   0.470692,
+   0.038579
+  ]
+ },
+ {
+  "input": {
+   "Age": 39,
+   "Rating": 4,
+   "Positive Feedback Count": 0,
+   "Division Name": "General Petite",
+   "Review Text": "This skirt fits true to size and sits on the natural waist nicely. i've paired it with black, and the contrast is very nice. the material is thick enough for winter, but will also work for the fall months, too."
+  },
+  "expected_proba": [
+   0.207573,
+   0.11155,
+   0.584139,
+   0.005767,
+   0.048597,
+   0.042374
+  ]
+ },
+ {
+  "input": {
+   "Age": 25,
+   "Rating": 5,
+   "Positive Feedback Count": 0,
+   "Division Name": "General",
+   "Review Text": "I would have never purchased this jacket based on the photo displayed here. it looks like something my grandma would wear. in person, however, this jacket is so versatile. the fabric moves with your body,and the ties at the bottom in the back and inside at the waist can be cinched to give it the look you want. i purchased this to wear with the weekend widelegs (which i also adore), and it's absolutely perfect. color goes with everything. i'll wear it with boyfriend jeans in the fall, too. great"
+  },
+  "expected_proba": [
+   0.05254,
+   0.000711,
+   0.002638,
+   0.004553,
+   0.936517,
+   0.003042
+  ]
+ },
+ {
+  "input": {
+   "Age": 39,
+   "Rating": 5,
+   "Positive Feedback Count": 1,
+   "Division Name": "General Petite",
+   "Review Text": "Sweater fits great and is nice and soft. i am 5'11 and got a m and the arms and length are perfect for me"
+  },
+  "expected_proba": [
+   0.938212,
+   0.00855,
+   0.016039,
+   0.002383,
+   0.031418,
+   0.003398
+  ]
+ },
+ {
+  "input": {
+   "Age": 40,
+   "Rating": 5,
+   "Positive Feedback Count": 6,
+   "Division Name": "General",
+   "Review Text": "For me, this top ran true to size. i'm so glad i ordered it in my normal size, because the spandex would have made the top way too clingy for me. i am normally a 8/medium on top and 12 bottom. i ordered this in a medium, and do not find it large at all. if you are going for a fitted look, sizing down may be best, but i didn't want it tight. on me, it's a little looser than what is shown on the model, but it still fits very nice, and not sloppy. i am not a fan of baggy tops. i have no issues with"
+  },
+  "expected_proba": [
+   0.767382,
+   0.043904,
+   0.079567,
+   0.010685,
+   0.078249,
+   0.020213
+  ]
+ },
+ {
+  "input": {
+   "Age": 47,
+   "Rating": 5,
+   "Positive Feedback Count": 0,
+   "Division Name": "General",
+   "Review Text": "Love the material (more natural fiber than synthetic), the pattern, and the colors. also, it is cozy! the one con is that it is really big and crazy-long. so long, that it may be a show-stopper. on the fence about that."
+  },
+  "expected_proba": [
+   0.462742,
+   0.076443,
+   0.225886,
+   0.02245,
+   0.149917,
+   0.062561
+  ]
+ },
+ {
+  "input": {
+   "Age": 38,
+   "Rating": 4,
+   "Positive Feedback Count": 0,
+   "Division Name": "General Petite",
+   "Review Text": "In maeve i run between a size 2-4.  my regular size 4 was too tight in the shoulders, the fabric didn't drop off the shoulders like it does on the model.  it also felt too tight near the back were the button is, almost as if there was not enough fabric.  the sleeves were also too short and tight around the arms.  sized up to a 6 and all those issues were fixed.  since this top is billowy anyway the size up really didn't mess with the shape of the top.  love the gold color, so pretty!"
+  },
+  "expected_proba": [
+   0.722812,
+   0.043666,
+   0.062852,
+   0.020861,
+   0.12298,
+   0.02683
+  ]
+ },
+ {
+  "input": {
+   "Age": 37,
+   "Rating": 2,
+   "Positive Feedback Count": 9,
+   "Division Name": "General",
+   "Review Text": "First off, this runs very large. i'm normally an 8 and sized down to the 6 but probably could have done a 4. it looked like a tent on me. the top part is lovely, i just think the bottom is way to large and not flattering. this one is definitely going back especially with all the white dress options they have out now."
+  },
+  "expected_proba": [
+   0.067613,
+   0.777113,
+   0.08727,
+   0.016167,
+   0.011024,
+   0.040813
+  ]
+ },
+ {
+  "input": {
+   "Age": 35,
+   "Rating": 5,
+   "Positive Feedback Count": 6,
+   "Division Name": "Initmates",
+   "Review Text": "I'm 5'5 130 lbs and tried this on a small at my store and then ordered it in a small petite. i like the petite better even though there isn't much of a difference, the petite is about 28 inches long. it still covers the bum but i was hoping to wear it with shorts and i think it's too long for that. i love the beautiful coral color, received a compliment on the color the first time i wore it. the quality is superb. the only downside is i don't like the way it looks when zipped, it doesn't give mu"
+  },
+  "expected_proba": [
+   0.0,
+   2.6e-05,
+   0.0,
+   0.999197,
+   0.000776,
+   0.0
+  ]
+ },
+ {
+  "input": {
+   "Age": 32,
+   "Rating": 4,
+   "Positive Feedback Count": 0,
+   "Division Name": "General",
+   "Review Text": "Exactly what i needed post pregnancy. this top is very comfortable with a drape that hides my tummy. the back hits that perfect spot where it looks great, but still hides a normal bra."
+  },
+  "expected_proba": [
+   0.289044,
+   0.403282,
+   0.199962,
+   0.023192,
+   0.03386,
+   0.05066
+  ]
+ },
+ {
+  "input": {
+   "Age": 39,
+   "Rating": 2,
+   "Positive Feedback Count": 2,
+   "Division Name": "General",
+   "Review Text": "I tried this on in a medium in the store and it was too big overall. i thought it was a nice concept for a feminine, whimsical top so i ordered a small online. but even then a small is still too big (and i usually wear a medium or an 8 in tops). maybe if it was slimmer through the ribs/waist area it could work but it just ends up looking maternity-ish and too voluminous everywhere below the bust. the front was too short, as well (stopped higher than what is shown on the model and i'm assuming sh"
+  },
+  "expected_proba": [
+   0.954233,
+   0.006316,
+   0.015929,
+   0.000905,
+   0.02056,
+   0.002058
+  ]
+ },
+ {
+  "input": {
+   "Age": 20,
+   "Rating": 3,
+   "Positive Feedback Count": 0,
+   "Division Name": "General",
+   "Review Text": "I ordered the dress online and found it to be not as pictured.  the length hit several inches above the knee.  the sleeves are also 3/4 length rather than full length as pictured.  i found the cut to be much less fitted through the torso as well.  i tried both the small and xsmall, which are my usual sizes.  the small was very loose through the torso, the xsmall was better, but looked overall too short, as if it were a petite cut.  i am 5'9\", however the model is supposed to be 5'10\"."
+  },
+  "expected_proba": [
+   0.03605,
+   0.865528,
+   0.059722,
+   0.012071,
+   0.006373,
+   0.020256
+  ]
+ }
+]
