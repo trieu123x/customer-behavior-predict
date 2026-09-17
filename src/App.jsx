@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { loadModel, predict } from "./model/infer.js";
 import { loadDeepModel, predictDeep } from "./model/deepInfer.js";
+import { loadCnnModel, predictCnn } from "./model/cnnInfer.js";
 
 const DIVISIONS = ["General", "General Petite", "Initmates"];
 const DEPARTMENTS = ["Tops", "Dresses", "Bottoms", "Intimate", "Jackets", "Trend"];
@@ -63,15 +64,19 @@ const SAMPLES = [
   },
 ];
 
-/** Hai bài toán, hai mô hình — người dùng chọn bằng tab. */
+/** Ba bài toán, ba mô hình — người dùng chọn bằng tab. */
 const TASKS = {
+  cnn: {
+    title: "CNN 1D trên văn bản",
+    subtitle: "Assignment 04 · chỉ dùng bình luận",
+  },
   interest: {
     title: "Sở thích ngành hàng",
-    subtitle: "Deep MLP 5 tầng · phân loại 6 lớp",
+    subtitle: "Assignment 03 · Deep MLP 5 tầng",
   },
   recommend: {
     title: "Khách có giới thiệu?",
-    subtitle: "Logistic Regression · phân loại nhị phân",
+    subtitle: "Logistic Regression · nhị phân",
   },
 };
 
@@ -79,23 +84,26 @@ const pct = (v) => `${(v * 100).toFixed(1)}%`;
 
 export default function App() {
   const [form, setForm] = useState(initialForm);
-  const [task, setTask] = useState("interest");
+  const [task, setTask] = useState("cnn");
   const [model, setModel] = useState(null);
   const [deepModel, setDeepModel] = useState(null);
+  const [cnnModel, setCnnModel] = useState(null);
   const [modelError, setModelError] = useState("");
   const [result, setResult] = useState(null);
   const [deepResult, setDeepResult] = useState(null);
+  const [cnnResult, setCnnResult] = useState(null);
 
   const handleChange = (name, value) => setForm((prev) => ({ ...prev, [name]: value }));
 
-  // Cả hai bundle đều là JSON hệ số nằm cùng origin — không có server dự đoán nào cả.
+  // Cả ba bundle đều là JSON hệ số nằm cùng origin — không có server dự đoán nào cả.
   useEffect(() => {
     let cancelled = false;
-    Promise.all([loadModel(), loadDeepModel()])
-      .then(([m, d]) => {
+    Promise.all([loadModel(), loadDeepModel(), loadCnnModel()])
+      .then(([m, d, c]) => {
         if (cancelled) return;
         setModel(m);
         setDeepModel(d);
+        setCnnModel(c);
       })
       .catch((err) => !cancelled && setModelError(err.message));
     return () => {
@@ -103,9 +111,16 @@ export default function App() {
     };
   }, []);
 
-  const runPredict = (source = form, loaded = model, loadedDeep = deepModel) => {
+  const runPredict = (
+    source = form,
+    loaded = model,
+    loadedDeep = deepModel,
+    loadedCnn = cnnModel,
+  ) => {
     if (loaded) setResult(predict(loaded, source));
     if (loadedDeep) setDeepResult(predictDeep(loadedDeep, source));
+    // CNN chỉ nhận trường văn bản — không dùng bất kỳ đặc trưng bảng nào.
+    if (loadedCnn) setCnnResult(predictCnn(loadedCnn, source["Review Text"]));
   };
 
   const handleSubmit = (e) => {
@@ -121,15 +136,16 @@ export default function App() {
   // Lets a screenshot/demo run land straight on a result: /?autodemo
   const didAutoDemo = useRef(false);
   useEffect(() => {
-    if (model && deepModel && !didAutoDemo.current && new URLSearchParams(window.location.search).has("autodemo")) {
+    if (model && deepModel && cnnModel && !didAutoDemo.current
+        && new URLSearchParams(window.location.search).has("autodemo")) {
       didAutoDemo.current = true;
-      runPredict(form, model, deepModel);
+      runPredict(form, model, deepModel, cnnModel);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [model, deepModel]);
+  }, [model, deepModel, cnnModel]);
 
-  const ready = model && deepModel;
-  const shown = task === "interest" ? deepResult : result;
+  const ready = model && deepModel && cnnModel;
+  const shown = task === "cnn" ? cnnResult : task === "interest" ? deepResult : result;
   const status = modelError ? "error" : !ready ? "loading" : shown ? "done" : "idle";
 
   const deepMetrics = deepModel?.metrics;
@@ -230,6 +246,14 @@ export default function App() {
                 />
               </div>
             </div>
+            {task === "cnn" && (
+              <p className="form-note">
+                CNN 1D <strong>chỉ đọc ô Review Text</strong> — mọi trường còn lại bị bỏ qua hoàn toàn.
+                Bình luận được tách token, tra từ điển {cnnModel?.tokenizer.vocab.length.toLocaleString("vi-VN")} từ,
+                rồi cho kernel dài 3 trượt qua như một bộ dò n-gram.{" "}
+                <strong>Department Name</strong> ở trên chỉ là đáp án đúng để bạn đối chiếu.
+              </p>
+            )}
             {task === "interest" && (
               <p className="form-note">
                 Mạng chỉ nhận <strong>Age, Rating, Positive Feedback Count, Division Name</strong> và
@@ -240,15 +264,72 @@ export default function App() {
             )}
             <button className="submit-btn" type="submit" disabled={!ready}>
               {ready
-                ? (task === "interest" ? "Dự đoán ngành hàng quan tâm" : "Dự đoán mức độ hài lòng")
+                ? (task === "cnn" ? "Dự đoán bằng CNN 1D"
+                  : task === "interest" ? "Dự đoán ngành hàng quan tâm"
+                  : "Dự đoán mức độ hài lòng")
                 : "Đang tải model..."}
             </button>
           </form>
 
           <div className={`result-panel ${status === "idle" || status === "loading" ? "idle" : ""}`}>
-            {status === "loading" && <p>Đang tải model.json (~85 KB) và model_deep.json (~740 KB)...</p>}
+            {status === "loading" && <p>Đang tải model.json, model_deep.json và model_cnn.json (~1,5 MB)...</p>}
             {status === "error" && <div className="error-box">{modelError}</div>}
             {status === "idle" && <p>Kết quả dự đoán sẽ hiển thị ở đây sau khi bạn nhấn nút.</p>}
+
+            {status === "done" && task === "cnn" && cnnResult && (
+              <>
+                <span className={`result-badge ${cnnResult.label === truth ? "positive" : "negative"}`}>
+                  🧩 {cnnResult.labelVi}
+                  {cnnResult.label === truth ? " · khớp nhãn thật" : ` · nhãn thật: ${truth}`}
+                </span>
+
+                <div className="class-bars">
+                  {cnnResult.ranking.map((r) => (
+                    <div key={r.label} className={`class-row ${r.i === cnnResult.classIndex ? "top" : ""}`}>
+                      <span className="class-name">{r.labelVi}</span>
+                      <div className="class-track">
+                        <div className="class-fill" style={{ width: `${Math.max(1, r.p * 100)}%` }} />
+                      </div>
+                      <span className="class-pct">{pct(r.p)}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="result-meta">
+                  Bình luận được tách thành <strong>{cnnResult.nTokens} token</strong>
+                  {cnnResult.nOov > 0 && <> ({cnnResult.nOov} token ngoài từ điển → <code>&lt;UNK&gt;</code>)</>}
+                  {cnnResult.truncated && <> · đã cắt về {cnnModel.tokenizer.max_len} token đầu</>}
+                  . Á quân: <strong>{cnnResult.runnerUp.labelVi}</strong> ({pct(cnnResult.runnerUp.p)}).
+                </div>
+
+                {cnnResult.topTokens.length > 0 && (
+                  <div className="terms">
+                    <div className="result-meta">
+                      Che từng token rồi đo xác suất lớp <strong>{cnnResult.labelVi}</strong> tụt bao nhiêu
+                      — số dương nghĩa là từ đó <em>củng cố</em> kết luận:
+                    </div>
+                    <div className="term-chips">
+                      {cnnResult.topTokens.map((t) => (
+                        <span key={`${t.token}-${t.position}`}
+                              className={`term-chip ${t.drop >= 0 ? "pos" : "neg"}`}>
+                          {t.token}
+                          <em>{t.drop >= 0 ? "+" : "−"}{(Math.abs(t.drop) * 100).toFixed(1)}%</em>
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div className="result-meta">
+                  {cnnModel.model_name} · {cnnModel.n_params.toLocaleString("vi-VN")} tham số ·
+                  test Macro-F1 {cnnModel.metrics.macro_f1.toFixed(3)}, balanced accuracy{" "}
+                  {pct(cnnModel.metrics.balanced_accuracy)}, accuracy {pct(cnnModel.metrics.accuracy)}.
+                  Huấn luyện {cnnModel.training.epochs_run} epoch bằng NumPy thuần trong{" "}
+                  {cnnModel.training.numpy_seconds}s (PyTorch {cnnModel.training.pytorch_seconds}s,
+                  TensorFlow {cnnModel.training.tensorflow_seconds}s cho cùng kiến trúc).
+                </div>
+              </>
+            )}
 
             {status === "done" && task === "interest" && deepResult && (
               <>
@@ -335,7 +416,55 @@ export default function App() {
           </div>
         </div>
 
-        {deepModel && (
+        {task === "cnn" && cnnModel && (
+          <div className="bench">
+            <div className="bench-title">
+              Đối sánh CNN 1D vs TF-IDF — phân loại 6 ngành hàng CHỈ từ văn bản (tập Test)
+            </div>
+            <table className="bench-table">
+              <thead>
+                <tr>
+                  <th>Mô hình</th>
+                  <th>Accuracy</th>
+                  <th>Balanced Acc</th>
+                  <th>Macro-F1</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.entries(cnnModel.comparison)
+                  .map(([name, m]) => ({ name, ...m, isCnn: name.startsWith("CNN") }))
+                  .sort((a, b) => b.macro_f1 - a.macro_f1)
+                  .map((r) => (
+                    <tr key={r.name} className={r.isCnn ? "deep-row" : ""}>
+                      <td>{r.isCnn ? "🧩 " : ""}{r.name}</td>
+                      <td>{r.accuracy.toFixed(4)}</td>
+                      <td>{r.balanced_accuracy.toFixed(4)}</td>
+                      <td>{r.macro_f1.toFixed(4)}</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+            <p className="bench-note">
+              <strong>Thứ tự từ có thật sự quan trọng không?</strong> Xáo trộn ngẫu nhiên thứ tự từ trong
+              mỗi bình luận của tập test làm Macro-F1 của CNN tụt từ{" "}
+              {cnnModel.word_order_test.cnn_f1_original.toFixed(4)} xuống{" "}
+              {cnnModel.word_order_test.cnn_f1_shuffled.toFixed(4)}, trong khi mô hình túi từ
+              (TF-IDF unigram) <strong>không đổi một chữ số nào</strong> (
+              {cnnModel.word_order_test.bow_f1_original.toFixed(4)} →{" "}
+              {cnnModel.word_order_test.bow_f1_shuffled.toFixed(4)}) — đúng như lý thuyết, vì nó không
+              nhìn thấy thứ tự. Đây là bằng chứng trực tiếp rằng tích chập đã học được các mẫu{" "}
+              <em>n-gram cục bộ</em>, thứ mà dữ liệu bảng ở Bài 1 và Bài 2 không hề có.
+            </p>
+            <p className="bench-note">
+              Dù vậy, TF-IDF + Logistic Regression vẫn nhỉnh hơn: nhãn ở đây là <em>loại sản phẩm</em>,
+              phần lớn được quyết định bởi sự có mặt của từ khoá (<code>dress</code>, <code>jeans</code>,{" "}
+              <code>blouse</code>) hơn là bởi trật tự. CNN chỉ thật sự vượt trội khi bài toán phụ thuộc
+              vào cụm từ — ví dụ phân tích cảm xúc, nơi <code>not good</code> phải khác <code>very good</code>.
+            </p>
+          </div>
+        )}
+
+        {task !== "cnn" && deepModel && (
           <div className="bench">
             <div className="bench-title">Đối sánh Classical ML vs Deep Learning — phân loại 6 ngành hàng (tập Test)</div>
             <table className="bench-table">
@@ -390,7 +519,8 @@ export default function App() {
       </div>
 
       <footer className="app-footer">
-        Không có backend — hai mô hình được nạp từ <code>/model.json</code> và <code>/model_deep.json</code>,
+        Không có backend — ba mô hình được nạp từ <code>/model.json</code>, <code>/model_deep.json</code> và{" "}
+        <code>/model_cnn.json</code> (trọng số đẩy thẳng lên GitHub, Vercel phục vụ như tệp tĩnh),
         suy luận chạy bằng JavaScript ngay trên máy bạn. Dữ liệu bạn nhập không rời khỏi trình duyệt.
       </footer>
     </div>

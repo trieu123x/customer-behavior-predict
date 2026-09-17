@@ -1,0 +1,158 @@
+[
+ {
+  "text": "This is a very lovely looking sweater. unfortunately, it runs incredibly small. i'm only 5'3\" and the size small hit me above my mid-rise jeans. it doesn't fit at all how it's shown on the model. it's also a very delicate fabric. seems like it would snag easily. i was really hoping it would work as i used my birthday discount to purchase it, but i'm sending it back.",
+  "expected_probs": [
+   7.7e-07,
+   0.00034914,
+   0.00439365,
+   0.0010564,
+   0.99418571,
+   1.433e-05
+  ],
+  "expected_class": "Tops",
+  "actual_class": "Tops"
+ },
+ {
+  "text": "This blouse is basically a rectangular piece of fabric that is folded over and sewn up the sides. the side seams are about 2-3 inches in from the edge of the fabric. the neck opening is finished nicely. the fabric has a nice drape to it, but the design on the front isn't as crisp and clear as i thought it would be; the design is a bit fuzzy. so i wish the picture on the front were clearer. i always wear an xl in retailer tops, but the size l in this fit nicely in the bust except is too snug at the",
+  "expected_probs": [
+   3.716e-05,
+   0.01391171,
+   0.06189227,
+   0.00114463,
+   0.92263089,
+   0.00038334
+  ],
+  "expected_class": "Tops",
+  "actual_class": "Tops"
+ },
+ {
+  "text": "I love this top, wish they had it in more colors, i would buy more!",
+  "expected_probs": [
+   4.439e-05,
+   0.00217579,
+   0.08341837,
+   0.00040306,
+   0.91394939,
+   9e-06
+  ],
+  "expected_class": "Tops",
+  "actual_class": "Tops"
+ },
+ {
+  "text": "I ordered this top because it was 100 percent cotton and a cute design. when it arrived, i thought it was a cute, different top, uniquely designed. when i tried it on, it looked like a had several extra rolls due to the ruching and was very unflattering. it reminded me of the michelin man wearing extra tires and i am of a thin build so i did not like the perception of rolls throughout the bodice. unfortunately, it did not work for me. i wish retailer would include more cotton tops in their collect",
+  "expected_probs": [
+   1e-08,
+   0.60142908,
+   0.35907145,
+   1.033e-05,
+   0.03938233,
+   0.00010679
+  ],
+  "expected_class": "Dresses",
+  "actual_class": "Tops"
+ },
+ {
+  "text": "This top is much more beautiful in person than in the photo. the embroidery is exquisite and there is the tiniest bit of sparkle amidst the design. soft, flowing and flattering. definitely a keeper.",
+  "expected_probs": [
+   2.32e-06,
+   0.00190099,
+   0.03327628,
+   0.00020651,
+   0.96460811,
+   5.79e-06
+  ],
+  "expected_class": "Tops",
+  "actual_class": "Tops"
+ },
+ {
+  "text": "I love byron lars. very taken with his fabrics and design concepts and i have ordered several of his dresses but i believe i need to surrender to the fact that they do not work for my body type. the dress is gorgeous in person: all the fabrics are great, the dress is fully lined and lots of nice finishing touches. it is a unique and very striking dress; this one i really wanted. however, it is designed for a woman who is proportionally longer, leaner with a larger bust size than i have. i ordere",
+  "expected_probs": [
+   0.0,
+   0.99689291,
+   0.00301895,
+   0.0,
+   1.28e-06,
+   8.686e-05
+  ],
+  "expected_class": "Dresses",
+  "actual_class": "Dresses"
+ },
+ {
+  "text": "When i saw this dress the model was standing in an outdoor setting and i fell in love with it but then i noticed the model in an indoors photo the dress looked different. as i studied the difference, it was the way the plaid fell on each dress. the one i liked fell more vertically giving it a slimming effect and the others were horizontal giving it a widening effect so, i went to my local retailer to see. they had the one i liked on a dummy. it is tts and the plaid matched perfectly. the front flo",
+  "expected_probs": [
+   0.0,
+   0.99954129,
+   0.00045147,
+   0.0,
+   6.7e-07,
+   6.57e-06
+  ],
+  "expected_class": "Dresses",
+  "actual_class": "Dresses"
+ },
+ {
+  "text": "But i didn't like the fit. maybe because i ordered petite and the length threw me off, but they weren't flattering in any way. the color and material were unique and pleasing. had to send them back though.",
+  "expected_probs": [
+   0.93032374,
+   0.00557277,
+   0.05476155,
+   0.00018665,
+   0.00216124,
+   0.00699406
+  ],
+  "expected_class": "Bottoms",
+  "actual_class": "Bottoms"
+ },
+ {
+  "text": "I love this dress. i purchased a size down from my normal dress size after reading the reviews. i'm 5'9\" 148lbs 34dd and the size 6 fit perfect. the attached slip is a tad darker than my  very fair skin color but it still works. can't wait to dress it up with some nice heels.",
+  "expected_probs": [
+   0.0,
+   0.99452442,
+   0.00456772,
+   2.14e-06,
+   3.371e-05,
+   0.00087201
+  ],
+  "expected_class": "Dresses",
+  "actual_class": "Dresses"
+ },
+ {
+  "text": "Comfortable and cute. versatile colors that can be worn with virtually anything.",
+  "expected_probs": [
+   0.0403083,
+   0.08298746,
+   0.17600995,
+   0.22568092,
+   0.46833186,
+   0.0066815
+  ],
+  "expected_class": "Tops",
+  "actual_class": "Tops"
+ },
+ {
+  "text": "I got the dark blue print which is a really pretty pattern. the fabric has a nice crinkly feel and the cut is very forgiving. i thought from the pictures it would be more of a traditional button down with straight lines. it actually is a looser fit but without the trapeze shape of some \"swing\" tops which i have found to be less flattering for those of us who are curvier on the bottom half. it's comfortable and flattering, could be tucked in or worn out and likewise dressed up or worn casually wi",
+  "expected_probs": [
+   0.00010666,
+   0.00075278,
+   0.00963041,
+   0.05043821,
+   0.93888112,
+   0.00019082
+  ],
+  "expected_class": "Tops",
+  "actual_class": "Tops"
+ },
+ {
+  "text": "I have a love-hate relationship with this dress. the fabric and print are beautiful but like most swing styles, this dress doesn't work if you're curvy. tried on an xs in the store which was huge, ordered an xxsp, the length was perfect but the dress does nothing for a pear-shape. looks marginally better cinched in with the belt but i was lost in all the fabric and the skimming nature of the dress did nothing for me. as my boyfriend said, \"that looks like something you'd wear if you were pregnan",
+  "expected_probs": [
+   0.0,
+   0.99326362,
+   0.00609924,
+   1.3e-07,
+   0.00020172,
+   0.00043528
+  ],
+  "expected_class": "Dresses",
+  "actual_class": "Dresses"
+ }
+]
